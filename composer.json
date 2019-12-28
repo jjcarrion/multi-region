@@ -10,8 +10,5 @@
             "name": "Jose Jiménez",
             "role": "Developer"
         }
-    ],
-  "require": {
-    "drupal/drupal": "^8"
-  }
+    ]
 }
