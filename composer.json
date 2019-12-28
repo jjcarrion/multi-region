@@ -1,0 +1,17 @@
+{
+    "name": "jjcarrion/multi-region",
+    "type": "drupal-module",
+    "description": "Multi region module for Drupal 8",
+    "keywords": ["drupal","multi-region"],
+    "homepage": "https://github.com/jjcarrion/multi-region",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Jiménez",
+            "role": "Developer"
+        }
+    ],
+  "require": {
+    "drupal/drupal": "^8"
+  }
+}
