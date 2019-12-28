@@ -1,0 +1,7 @@
+name: 'Multi Region'
+type: module
+description: 'Multi Region solution for Drupal 8'
+core: 8.x
+package: 'Multi Region'
+dependencies:
+  - drupal:language
