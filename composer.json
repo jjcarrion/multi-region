@@ -1,9 +1,9 @@
 {
-    "name": "jjcarrion/multi-region",
+    "name": "jjcarrion/multi_region",
     "type": "drupal-module",
     "description": "Multi region module for Drupal 8",
     "keywords": ["drupal","multi-region"],
-    "homepage": "https://github.com/jjcarrion/multi-region",
+    "homepage": "https://github.com/jjcarrion/multi_region",
     "license": "MIT",
     "authors": [
         {
