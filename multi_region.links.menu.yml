@@ -1,0 +1,8 @@
+
+# Region menu items definition
+entity.region.collection:
+  title: 'Region'
+  route_name: entity.region.collection
+  description: 'List Region (bundles)'
+  parent: system.admin_structure
+  weight: 99
