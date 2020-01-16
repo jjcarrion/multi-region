@@ -8,7 +8,7 @@ use Drupal\Core\Entity\EntityInterface;
 /**
  * Provides a listing of Region entities.
  */
-class RegionListBuilder extends ConfigEntityListBuilder {
+class ConfigurableRegionListBuilder extends ConfigEntityListBuilder {
 
   /**
    * {@inheritdoc}

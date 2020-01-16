@@ -1,4 +1,4 @@
-multi_region.region.*:
+multi_region.configurable_region.*:
   type: config_entity
   label: 'Region config'
   mapping:

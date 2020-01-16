@@ -9,7 +9,7 @@ use Drupal\Core\Url;
 /**
  * Builds the form to delete Region entities.
  */
-class RegionDeleteForm extends EntityConfirmFormBase {
+class ConfigurableRegionDeleteForm extends EntityConfirmFormBase {
 
   /**
    * {@inheritdoc}
@@ -22,7 +22,7 @@ class RegionDeleteForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('entity.region.collection');
+    return new Url('entity.configurable_region.collection');
   }
 
   /**
