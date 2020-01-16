@@ -15,7 +15,7 @@ interface ConfigurableRegionInterface extends ConfigEntityInterface {
    * @return array
    *   The list of languages.
    */
-  public function getLanguages();
+  public function getRegionLanguages();
 
   /**
    * Get the default language.

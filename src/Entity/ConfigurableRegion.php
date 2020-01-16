@@ -57,15 +57,15 @@ class ConfigurableRegion extends ConfigEntityBase implements ConfigurableRegionI
   /**
    * The languages for that region.
    *
-   * @var string
+   * @var array
    */
-  protected $languages;
+  protected $region_languages = [];
 
   /**
    * {@inheritDoc}
    */
-  public function getLanguages() {
-    return $this->languages;
+  public function getRegionLanguages() {
+    return $this->region_languages;
   }
 
   /**

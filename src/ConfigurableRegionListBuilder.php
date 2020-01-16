@@ -16,6 +16,8 @@ class ConfigurableRegionListBuilder extends ConfigEntityListBuilder {
   public function buildHeader() {
     $header['label'] = $this->t('Region');
     $header['id'] = $this->t('Machine name');
+    $header['region_languages'] = $this->t('Region Languages');
+    $header['default_language'] = $this->t('Default Language');
     return $header + parent::buildHeader();
   }
 
@@ -25,7 +27,8 @@ class ConfigurableRegionListBuilder extends ConfigEntityListBuilder {
   public function buildRow(EntityInterface $entity) {
     $row['label'] = $entity->label();
     $row['id'] = $entity->id();
-    // You probably want a few more properties here...
+    $row['region_languages'] = implode(' | ', $entity->getRegionLanguages());
+    $row['default_language'] = $entity->getDefaultLanguage();
     return $row + parent::buildRow($entity);
   }
 

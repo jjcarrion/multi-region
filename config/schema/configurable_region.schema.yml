@@ -10,3 +10,9 @@ multi_region.configurable_region.*:
       label: 'Label'
     uuid:
       type: string
+    region_languages:
+      type: array
+      label: 'Region languages'
+    default_language:
+      type: string
+      label: 'Default language'

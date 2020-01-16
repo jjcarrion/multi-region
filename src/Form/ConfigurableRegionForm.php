@@ -4,6 +4,8 @@ namespace Drupal\multi_region\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\language\Entity\ConfigurableLanguage;
+use Drupal\multi_region\Entity\ConfigurableRegion;
 
 /**
  * Class ConfigurableRegionForm.
@@ -23,7 +25,7 @@ class ConfigurableRegionForm extends EntityForm {
       '#title' => $this->t('Label'),
       '#maxlength' => 255,
       '#default_value' => $configurable_region->label(),
-      '#description' => $this->t("Label for the Region."),
+      '#description' => $this->t('Label for the Region.'),
       '#required' => TRUE,
     ];
 
@@ -36,25 +38,55 @@ class ConfigurableRegionForm extends EntityForm {
       '#disabled' => !$configurable_region->isNew(),
     ];
 
-    $form['languages'] = [
+    $form['region_languages'] = [
       '#type' => 'entity_autocomplete',
-      '#title' => t('Languages'),
+      '#title' => t('Region languages'),
       '#target_type' => 'configurable_language',
-//      '#default_value' => $configurable_region->getLanguages(),
+      '#default_value' => ConfigurableLanguage::loadMultiple($configurable_region->getRegionLanguages()),
       '#validate_reference' => TRUE,
-      '#size' => '60',
-      '#maxlength' => '60',
-      '#description' => $this->t('Select the languages for this region.'),
+      '#size' => '120',
+      '#tags' => TRUE,
+      '#maxlength' => '255',
+      '#description' => $this->t('Select the languages for this region. You can select more than one, but you have to separate languages with comma.'),
+      '#required' => TRUE,
     ];
 
+    $form['default_language'] = [
+      '#type' => 'entity_autocomplete',
+      '#target_type' => 'configurable_language',
+      '#default_value' => $configurable_region->getDefaultLanguage() ? ConfigurableLanguage::load($configurable_region->getDefaultLanguage()) : NULL,
+      '#validate_reference' => TRUE,
+      '#size' => '120',
+      '#tags' => FALSE,
+      '#maxlength' => '255',
+      '#title' => $this->t('Default language'),
+      '#description' => $this->t('Default language for the Region.'),
+      '#required' => TRUE,
+    ];
     return $form;
   }
 
   /**
    * {@inheritdoc}
    */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    if (!in_array($form_state->getValue('default_language'), array_column($form_state->getValue('region_languages'), 'target_id'), TRUE)) {
+      $form_state->setErrorByName('default_language', $this->t('The default language should be one of the languages from the Region languages.'));
+    }
+    parent::validateForm($form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   * @throws \Drupal\Core\Entity\EntityMalformedException
+   */
   public function save(array $form, FormStateInterface $form_state) {
+    /** @var \Drupal\multi_region\Entity\ConfigurableRegion $configurable_region */
     $configurable_region = $this->entity;
+    $configurable_region->set('region_languages', array_column($form_state->getValue('region_languages'), 'target_id'));
+    $configurable_region->set('default_language', $form_state->getValue('default_language'));
     $status = $configurable_region->save();
 
     switch ($status) {
