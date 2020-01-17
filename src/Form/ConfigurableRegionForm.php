@@ -4,7 +4,6 @@ namespace Drupal\multi_region\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\language\Entity\ConfigurableLanguage;
 
 /**
  * Class ConfigurableRegionForm.
@@ -41,7 +40,7 @@ class ConfigurableRegionForm extends EntityForm {
       '#type' => 'entity_autocomplete',
       '#title' => t('Region languages'),
       '#target_type' => 'configurable_language',
-      '#default_value' => ConfigurableLanguage::loadMultiple($configurable_region->getRegionLanguages()),
+      '#default_value' => $this->entityTypeManager->getStorage('configurable_language')->loadMultiple($configurable_region->getRegionLanguages()),
       '#validate_reference' => TRUE,
       '#size' => '120',
       '#tags' => TRUE,
@@ -53,7 +52,7 @@ class ConfigurableRegionForm extends EntityForm {
     $form['default_language'] = [
       '#type' => 'entity_autocomplete',
       '#target_type' => 'configurable_language',
-      '#default_value' => $configurable_region->getDefaultLanguage() ? ConfigurableLanguage::load($configurable_region->getDefaultLanguage()) : NULL,
+      '#default_value' => $configurable_region->getDefaultLanguage() ? $this->entityTypeManager->getStorage('configurable_language')->load($configurable_region->getDefaultLanguage()) : NULL,
       '#validate_reference' => TRUE,
       '#size' => '120',
       '#tags' => FALSE,
