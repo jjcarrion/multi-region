@@ -1,0 +1,4 @@
+services:
+  multi_region.region_manager:
+    class: Drupal\multi_region\RegionManager
+    arguments: ['@language_manager', '@entity_type.manager', '@entity.repository', '@current_route_match', '@path.matcher']
