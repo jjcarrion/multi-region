@@ -5,7 +5,6 @@ namespace Drupal\multi_region\Form;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\language\Entity\ConfigurableLanguage;
-use Drupal\multi_region\Entity\ConfigurableRegion;
 
 /**
  * Class ConfigurableRegionForm.
@@ -89,17 +88,15 @@ class ConfigurableRegionForm extends EntityForm {
     $configurable_region->set('default_language', $form_state->getValue('default_language'));
     $status = $configurable_region->save();
 
-    switch ($status) {
-      case SAVED_NEW:
-        $this->messenger()->addMessage($this->t('Created the %label Region.', [
-          '%label' => $configurable_region->label(),
-        ]));
-        break;
-
-      default:
-        $this->messenger()->addMessage($this->t('Saved the %label Region.', [
-          '%label' => $configurable_region->label(),
-        ]));
+    if ($status === SAVED_NEW) {
+      $this->messenger()->addMessage($this->t('Created the %label Region.', [
+        '%label' => $configurable_region->label(),
+      ]));
+    }
+    else {
+      $this->messenger()->addMessage($this->t('Saved the %label Region.', [
+        '%label' => $configurable_region->label(),
+      ]));
     }
     $form_state->setRedirectUrl($configurable_region->toUrl('collection'));
   }
