@@ -55,6 +55,20 @@ class ConfigurableRegion extends ConfigEntityBase implements ConfigurableRegionI
   protected $label;
 
   /**
+   * The status of the region.
+   *
+   * @var bool
+   */
+  protected $status;
+
+  /**
+   * {@inheritDoc}
+   */
+  public function isEnabled() {
+    return $this->status;
+  }
+
+  /**
    * The languages for that region.
    *
    * @var array

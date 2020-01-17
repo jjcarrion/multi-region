@@ -62,6 +62,12 @@ class ConfigurableRegionForm extends EntityForm {
       '#description' => $this->t('Default language for the Region.'),
       '#required' => TRUE,
     ];
+    $form['status'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Region enabled'),
+      '#default_value' => $configurable_region->isEnabled(),
+      '#description' => $this->t('Uncheck this checkbox if the region should not be visible.'),
+    ];
     return $form;
   }
 

@@ -10,6 +10,14 @@ use Drupal\Core\Config\Entity\ConfigEntityInterface;
 interface ConfigurableRegionInterface extends ConfigEntityInterface {
 
   /**
+   * Status of the region.
+   *
+   * @return bool
+   *   Is the region enabled?.
+   */
+  public function isEnabled();
+
+  /**
    * Get the list of languages.
    *
    * @return array

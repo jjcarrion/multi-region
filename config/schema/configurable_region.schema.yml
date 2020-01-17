@@ -10,6 +10,12 @@ multi_region.configurable_region.*:
       label: 'Label'
     uuid:
       type: string
+    weight:
+      type: integer
+      label: 'Weight'
+    status:
+      type: boolean
+      label: 'Enabled'
     region_languages:
       type: array
       label: 'Region languages'
