@@ -4,6 +4,7 @@ namespace Drupal\multi_region;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
 
 /**
  * Provides a listing of Region entities.
@@ -32,6 +33,21 @@ class ConfigurableRegionListBuilder extends ConfigEntityListBuilder {
     $row['region_languages'] = implode(' | ', $entity->getRegionLanguages());
     $row['default_language'] = $entity->getDefaultLanguage();
     return $row + parent::buildRow($entity);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDefaultOperations(EntityInterface $entity) {
+    $operations = parent::getDefaultOperations($entity);
+    if ($entity->access('global-menu')) {
+      $operations['global_menu'] = [
+        'title' => $this->t('Global menu'),
+        'weight' => 10,
+        'url' => $this->ensureDestination(Url::fromRoute('entity.configurable_region.global_menu_form', ['configurable_region' => $entity->id()])),
+      ];
+    }
+    return $operations;
   }
 
 }

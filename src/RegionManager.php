@@ -76,15 +76,9 @@ class RegionManager implements RegionManagerInterface {
   }
 
   /**
-   * Get the current region config entity.
-   *
-   * @return \Drupal\multi_region\Entity\ConfigurableRegion|null
-   *   The region config entity.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * {@inheritdoc}
    */
-  private function getCurrentRegion() {
+  public function getCurrentRegion() {
     $selected_region = NULL;
     $current_language = $this->languageManager->getCurrentLanguage();
     /** @var \Drupal\multi_region\Entity\ConfigurableRegion $region */

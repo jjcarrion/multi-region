@@ -6,3 +6,10 @@ entity.configurable_region.collection:
   description: 'List Regions'
   parent: system.admin_config_regional
   weight: 99
+
+shortcut.configurable_region.collection:
+  title: 'Regions'
+  route_name: entity.configurable_region.collection
+  description: 'List Regions'
+  parent: system.admin
+  weight: -2

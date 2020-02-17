@@ -22,3 +22,6 @@ multi_region.configurable_region.*:
     default_language:
       type: string
       label: 'Default language'
+    global_menu:
+      type: array
+      label: 'Global menu'

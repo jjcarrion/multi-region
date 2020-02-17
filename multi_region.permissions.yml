@@ -1,0 +1,21 @@
+administer configurable region entities:
+  title: Administer configurable region
+  description: Administer configurable region.
+
+create configurable region entities:
+  title: 'Create configurable region entities entities'
+
+edit configurable region entities:
+  title: 'Edit configurable region entities entities'
+
+edit own configurable region entities:
+  title: 'Edit own configurable region entities entities'
+
+edit global menu configurable region entities:
+  title: 'Edit global menu configurable region entities entities'
+
+edit own global menu configurable region entities:
+  title: 'Edit own global menu configurable region entities entities'
+
+delete configurable region entities:
+  title: 'Delete configurable region entities entities'

@@ -8,6 +8,17 @@ namespace Drupal\multi_region;
 interface RegionManagerInterface {
 
   /**
+   * Get the current region config entity.
+   *
+   * @return \Drupal\multi_region\Entity\ConfigurableRegion|null
+   *   The region config entity.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function getCurrentRegion();
+
+  /**
    * Get language links for current region.
    *
    * @return object
