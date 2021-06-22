@@ -1,7 +1,7 @@
 name: 'Multi Region'
 type: module
 description: 'Multi Region solution for Drupal 8'
-core: 8.x
+core_version_requirement: ^8.8 || ^9
 package: 'Multi Region'
 dependencies:
   - drupal:language
