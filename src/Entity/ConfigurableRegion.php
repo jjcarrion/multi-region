@@ -32,6 +32,11 @@ use Drupal\Core\Entity\EntityInterface;
  *     "label" = "label",
  *     "uuid" = "uuid"
  *   },
+ *   config_export = {
+ *     "id" = "id",
+ *     "label" = "label",
+ *     "uuid" = "uuid"
+ *   },
  *   links = {
  *     "canonical" = "/admin/config/regional/region/{configurable_region}",
  *     "add-form" = "/admin/config/regional/region/add",
