@@ -3,7 +3,6 @@
 namespace Drupal\multi_region\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Defines the Region entity.
@@ -33,9 +32,16 @@ use Drupal\Core\Entity\EntityInterface;
  *     "uuid" = "uuid"
  *   },
  *   config_export = {
- *     "id" = "id",
- *     "label" = "label",
- *     "uuid" = "uuid"
+ *     "uuid",
+ *     "langcode",
+ *     "status",
+ *     "dependencies",
+ *     "id",
+ *     "label",
+ *     "weight",
+ *     "region_languages",
+ *     "default_language",
+ *     "global_menu"
  *   },
  *   links = {
  *     "canonical" = "/admin/config/regional/region/{configurable_region}",
